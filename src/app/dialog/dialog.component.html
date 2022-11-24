@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Add sua Tarefa</h1>
+<div mat-dialog-content>
+  <form [formGroup]="tarefaForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Título</mat-label>
+      <input formControlName="taskName" matInput placeholder="Title">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="category" placeholder="Categoria" >
+        <mat-option value="Urgente/Importante">Urgente/Importante</mat-option>
+        <mat-option value="Urgente/Não Importante">Urgente/Não Importante</mat-option>
+        <mat-option value="Não Urgente/Não Importante">Não Urgente/Não Importante</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Data</mat-label>
+      <mat-date-range-input  [rangePicker]="picker">
+        <input formControlName="date1" matStartDate placeholder="Start date">
+        <input formControlName="date2" matEndDate placeholder="End date">
+      </mat-date-range-input>
+      
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Comentário</mat-label>
+      <textarea formControlName="comment" matInput></textarea>
+    </mat-form-field>
+  
+    <label for=""><h1>Status</h1></label>
+    <mat-radio-group formControlName="statusTask" class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let status of statusLista" [value]="status">
+        {{ status }}
+      </mat-radio-button>
+    </mat-radio-group>
+     
+  </form>
+</div>
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close="">Fechar</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addTask()">{{ actionBtn}}</button>
+
+</div>
