@@ -52,6 +52,7 @@ export class DialogComponent implements OnInit {
           alert("Tarefa adicionada com sucesso!");
           this.tarefaForm.reset();
           this.dialogRef.close('salvar');
+          
         },
         error:()=>{
           alert("Erro ao add a tarefa")
@@ -62,7 +63,9 @@ export class DialogComponent implements OnInit {
     this.updateTask()
 
    }
+   
   }
+
   updateTask(){
     this.api.putTask(this.tarefaForm.value, this.editData.id)
     .subscribe({
@@ -70,10 +73,12 @@ export class DialogComponent implements OnInit {
         alert("Tarefa atualizada com sucesso!");
         this.tarefaForm.reset();
         this.dialogRef.close('update');
+        
       },
       error:()=>{
         alert("Erro ao atualizar o registro!")
       }
     })
+    
   }
 }

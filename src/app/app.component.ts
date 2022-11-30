@@ -30,7 +30,7 @@ constructor(private dialog : MatDialog, private api : ApiService){
     this.dialog.open(DialogComponent, {
       width: '30%'
     }).afterClosed().subscribe(val=>{
-      if(val === 'save'){
+      if(val === 'salvar'){
         this.getAllTasks();
       }
     })
@@ -55,7 +55,7 @@ constructor(private dialog : MatDialog, private api : ApiService){
       width: '30%',
       data:row
     }).afterClosed().subscribe(val=>{
-      if(val=== 'update'){
+      if(val=== 'atualizar'){
         this.getAllTasks();
       }
     })
